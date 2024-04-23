@@ -39,7 +39,7 @@ export default function Signup() {
   };
 
   return (
-    <div className="px-10 py-2 rounded-md border-none">
+    <div className="rounded-md border-none">
       <h1 style={{ textAlign: "center"}}>Short Notes</h1>
       <p style={{ textAlign: "center"}}>Welcome to your short notes application! Start your note creation, editing, deleting and updating here!</p>
       <h1 style={{ textAlign: "center" }}>Sign Up</h1>
@@ -53,20 +53,20 @@ export default function Signup() {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="px-4 py-2 rounded-md"
+          className="rounded-md"
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="px-10 py-2 rounded-md"
+          className="rounded-md"
         />
-        <button type="submit" className="px-10 py-2 rounded-md border-none">
+        <button type="submit" className="rounded-md border-none">
           Sign Up
         </button>
       </form>
-      <p style={{ textAlign: "center"}} className="mt-20">
+      <p style={{ textAlign: "center"}}>
         Already have an account?{" "}
         <button onClick={navigateToLogin} className="bg-transparent border-none cursor-pointer">
           Login

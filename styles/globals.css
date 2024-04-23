@@ -1,12 +1,12 @@
 
 body {
   background-color: #b8c8ff;
-  color: #8d02b7/*#ffeffe*/;
+  color: #79009e/*#ffeffe*/;
 }
 
 button {
   background-color: #9292fe;
-  color: #8d02b7;
+  color: #79009e;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -21,7 +21,7 @@ button:hover {
 input,
 textarea {
   background-color: #ffeffe;
-  color: #8d02b7;
+  color: #79009e;
   border: 1px solid #44aafd;
   padding: 8px;
   border-radius: 4px;

@@ -36,7 +36,7 @@ export default function Login() {
   };
 
   return (
-    <div className="px-10 py-2 rounded-md border-none">
+    <div className="rounded-md border-none">
       <h1 style={{ textAlign: "center" }}>Short Notes</h1>
       <p style={{ textAlign: "center"}}>Welcome to your short notes application! Start your note creation, editing, deleting and updating here!</p>
       <h1 style={{ textAlign: "center" }}>Login</h1>
@@ -50,20 +50,20 @@ export default function Login() {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="px-10 py-2 rounded-md"
+          className="rounded-md"
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="px-10 py-2 rounded-md"
+          className="rounded-md"
         />
-        <button type="submit" className="px-10 py-2 rounded-md border-none">
+        <button type="submit" className="rounded-md border-none">
           Log In
         </button>
       </form>
-      <p style={{ textAlign: "center"}} className="mt-20">
+      <p style={{ textAlign: "center"}}>
         Don't have an account?{" "}
         <button onClick={navigateToSignup} className="bg-transparent border-none cursor-pointer">
           Sign Up

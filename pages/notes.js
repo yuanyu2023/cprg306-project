@@ -108,7 +108,7 @@ function ShortNotes({ ...props }) {
       <h1 style={{ textAlign: "center" }}>
         Short Notes
       </h1>
-      <button onClick={handleLogout} className="my-10">
+      <button onClick={handleLogout} className="pl-8">
         Log out
       </button>
       <div className='mb-20'>
@@ -119,7 +119,7 @@ function ShortNotes({ ...props }) {
           onChange={(e) => setNewNote(e.target.value)}
           className='mr-10'
         />
-        <button onClick={addNote}>
+        <button onClick={addNote} className="p-4">
           Add Notes
         </button>
       </div>
