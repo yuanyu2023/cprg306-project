@@ -64,7 +64,7 @@ export default function Login() {
         </button>
       </form>
       <p style={{ textAlign: "center"}}>
-        Don't have an account?{" "}
+        Do not have an account?{" "}
         <button onClick={navigateToSignup} className="bg-transparent border-none cursor-pointer">
           Sign Up
         </button>
