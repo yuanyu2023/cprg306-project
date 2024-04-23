@@ -27,13 +27,12 @@ function ShortNotes({ ...props }) {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      router.push("/login"); // Redirect to login after logout
+      router.push("/login");
     } catch (error) {
       console.error("Logout Error:", error);
     }
   };
 
-  // Fetch to-dos from Firestore based on the user's ID
   const fetchNotes = async (userId) => {
     const q = query(collection(db, "notes"), where("userId", "==", userId));
     const querySnapshot = await getDocs(q);
@@ -47,7 +46,6 @@ function ShortNotes({ ...props }) {
     console.log("notes fetched");
   };
 
-  // Add a new to-do
   const addNote = async () => {
     if (newNote === "" || !auth.currentUser) {
       return;
@@ -64,13 +62,11 @@ function ShortNotes({ ...props }) {
     setNewNote("");
   };
 
-  // Delete a to-do
   const deleteNote = async (id) => {
     await deleteDoc(doc(db, "notes", id));
     setNotes(notes.filter((note) => note.id !== id));
   };
 
-  // Set a to-do item to editing mode
   const setEditing = (id) => {
     setNotes(
       notes.map((note) => {
@@ -82,7 +78,6 @@ function ShortNotes({ ...props }) {
     );
   };
 
-  // Handle change in the edit text field
   const handleEditChange = (e, id) => {
     setNotes(
       notes.map((note) => {
@@ -94,7 +89,6 @@ function ShortNotes({ ...props }) {
     );
   };
 
-  // Submit the edited to-do
   const submitEdit = async (id) => {
     const editedNote = notes.find((note) => note.id === id);
     await updateDoc(doc(db, "notes", id), { text: editedNote.text });
@@ -110,96 +104,48 @@ function ShortNotes({ ...props }) {
   };
 
   return (
-    <div style={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
-      <h1 style={{ color: "var(--color-latte)", textAlign: "center" }}>
+    <div className="px-20 max-w-800 mx-auto">
+      <h1 style={{ textAlign: "center" }}>
         Short Notes
       </h1>
-      <button
-        onClick={handleLogout}
-        style={{
-          background: "var(--color-macchiato)",
-          color: "var(--color-latte)",
-          margin: "10px 0",
-        }}
-      >
+      <button onClick={handleLogout} className="my-10">
         Log out
       </button>
-      <div style={{ marginBottom: "20px" }}>
+      <div className='mb-20'>
         <input
           type="text"
           placeholder="Write a new short note"
           value={newNote}
           onChange={(e) => setNewNote(e.target.value)}
-          style={{ marginRight: "10px" }}
+          className='mr-10'
         />
-        <button
-          onClick={addNote}
-          style={{
-            background: "var(--color-frappe)",
-            color: "var(--color-latte)",
-          }}
-        >
+        <button onClick={addNote}>
           Add Notes
         </button>
       </div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: "20px",
-        }}
-      >
+      <div className="grid grid-cols-3 gap-20">
         {notes.map((note) => (
-          <div
-            key={note.id}
-            style={{
-              background: "var(--color-espresso)",
-              color: "var(--color-latte)",
-              borderRadius: "8px",
-              padding: "15px",
-              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-            }}
-          >
+          <div key={note.id} className="rounded-lg p-15 shadow-md">
             {note.isEditing ? (
               <input
                 type="text"
                 value={note.text}
                 onChange={(e) => handleEditChange(e, note.id)}
-                style={{ width: "100%", marginBottom: "10px" }}
+                className="w-full mb-10"
               />
             ) : (
               <p>{note.text}</p>
             )}
             {note.isEditing ? (
-              <button
-                onClick={() => submitEdit(note.id)}
-                style={{
-                  background: "var(--color-macchiato)",
-                  color: "var(--color-latte)",
-                }}
-              >
+              <button onClick={() => submitEdit(note.id)}>
                 Done
               </button>
             ) : (
-              <button
-                onClick={() => setEditing(note.id)}
-                style={{
-                  background: "var(--color-macchiato)",
-                  color: "var(--color-latte)",
-                  marginRight: "10px",
-                }}
-              >
+              <button onClick={() => setEditing(note.id)} className="mr-10">
                 Edit
               </button>
             )}
-            <button
-              onClick={() => deleteNote(note.id)}
-              style={{
-                background: "var(--color-macchiato)",
-                color: "var(--color-latte)",
-                marginTop: "10px",
-              }}
-            >
+            <button onClick={() => setEditing(note.id)} className="mt-10">
               Delete
             </button>
           </div>
