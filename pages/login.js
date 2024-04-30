@@ -43,7 +43,7 @@ export default function Login() {
       {error && <p className="text-black">{error}</p>}
       <form
         onSubmit={handleLogin}
-        style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+        style={{ display: "flex", flexDirection: "column", gap: "10px", justifyContent: "center" }}
       >
         <input
           type="email"
